@@ -18,35 +18,31 @@ const lintFile = (filePath: string) => {
 let fileNames = []
 glob("**/*.js", (err, files) => {
     files.forEach(element => {
-        if (element.split("/")[0] === "src" || element.split("/")[0] === "app") {
-            fileNames.push(element)
-        }
+        fileNames.push(element)
     });
 })
 
 glob("**/*.ts", (err, files) => {
     files.forEach(element => {
-        if (element.split("/")[0] === "src" || element.split("/")[0] === "app") {
-            fileNames.push(element)
-        }
+        fileNames.push(element)
     });
 })
 
 glob("**/*.tsx", (err, files) => {
     files.forEach(element => {
-        if (element.split("/")[0] === "src" || element.split("/")[0] === "app") {
-            fileNames.push(element)
-        }
+        fileNames.push(element)
     });
 })
 
 glob("**/*.jsx", (err, files) => {
     files.forEach(element => {
-        if (element.split("/")[0] === "src" || element.split("/")[0] === "app") {
-            fileNames.push(element)
-        }
+        fileNames.push(element)
     });
+    
     for (let i of fileNames) {
-        lintFile(i)
+        if (!i.startsWith("node_modules") && !i.startsWith("dist") && !i.startsWith(".")) {
+            console.log("i",i);
+            lintFile(i)
+        }
     }
 })

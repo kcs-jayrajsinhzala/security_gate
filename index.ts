@@ -5,7 +5,7 @@ const lintFile = (filePath: string) => {
     fs.readFile(`./${filePath}`, "utf-8", (err, data) => {
 
         try {
-            if (data.includes("console.log(")) {
+            if (data && data?.includes("console.log(")) {
                 throw new Error(`${process.cwd()}/${filePath} contains console.log() please remove it.`)
             }
         } catch (error) {

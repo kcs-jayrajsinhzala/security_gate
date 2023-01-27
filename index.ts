@@ -41,7 +41,6 @@ glob("**/*.jsx", (err, files) => {
     
     for (let i of fileNames) {
         if (!i.startsWith("node_modules") && !i.startsWith("dist") && !i.startsWith(".")) {
-            console.log("i",i);
             lintFile(i)
         }
     }
